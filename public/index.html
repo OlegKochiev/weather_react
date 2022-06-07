@@ -9,5 +9,68 @@
     
     <div id="root"></div>
     
+  <h1 class="sr-only">Weather App</h1>
+  <div class="weather">
+    <div class="weather__grid">
+      <form class="weather__form weather-form" action="">
+        <label class="sr-only" for="weatherInput">weather form input</label>
+
+        <input class="weather-form__input" id="inputForm" type="text" name="weatherInput" id="weatherInput"
+          placeholder="Input city..">
+
+        <button class="weather-form__btn" id="btnForm" type="button"></button>
+      </form>
+      <ul class="weather__main-list">
+        <li class="weather__main-item weather__main-item--active ">
+          <div class="common-info">
+            <div class="common-info__temperature"></div>
+
+            <div class="common-info__city"></div>
+
+            <button class="common-info__favourite" type="button"></button>
+          </div>
+        </li>
+
+        <li class="weather__main-item ">
+          <div class="detailed-info">
+            <div class="detailed-info__city"></div>
+            <ul class="detailed-info__list">
+              <li class="detailed-info__item detailed-info__item--temp"></li>
+              <li class="detailed-info__item detailed-info__item--feels-like"></li>
+              <li class="detailed-info__item detailed-info__item--weather"></li>
+              <li class="detailed-info__item detailed-info__item--sunrise"></li>
+              <li class="detailed-info__item detailed-info__item--sunset"></li>
+            </ul>
+          </div>
+
+        </li>
+
+        <li class="weather__main-item ">
+          <div class="hour-info">
+            <div class="hour-info__city"></div>
+
+            <ul class="weather__main-hourly">
+            </ul>
+          </div>
+
+
+        </li>
+      </ul>
+      <div class="weather__title-wrapper">
+        <span class="weather__location-title">
+          Added Locations:
+        </span>
+      </div>
+
+      <ul class="weather__location-list">
+      </ul>
+
+      <button class="weather__nav-btn weather__nav-btn--active" id="btnNow" type="button">Now</button>
+      <button class="weather__nav-btn" id="btnDetails" type="button">Details</button>
+      <button class="weather__nav-btn" id="btnForecast" type="button">Forecast</button>
+    </div>
+  </div>
+
+
   </body>
 </html>
