@@ -1,3 +1,4 @@
+import { BTNS_NAME } from "../consts";
 import React from "react";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
