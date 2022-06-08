@@ -4,6 +4,11 @@ const BTNS_NAME = {
   DETAILS: "Details"
 }
 
+const DEFAULT = {
+  CITY: "Vladikavkaz"
+}
+
 export {
-  BTNS_NAME
+  BTNS_NAME,
+  DEFAULT
 }

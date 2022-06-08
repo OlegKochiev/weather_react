@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SearchForm() {
+function SearchForm({ handleSearch }) {
+  const [city, setCity] = useState('');
+
+  function submitHandler(e) {
+    e.preventDefault();
+    handleSearch(city);
+    clearInput();
+  }
+
+  function inputChangeHandler(e) {
+    const inputValue = e.target.value;
+    setCity(inputValue);
+  }
+
+  function clearInput() {
+    setCity('');
+  }
   return (
     <form
       className="weather__form weather-form"
-      action="#">
+      action="#"
+      onSubmit={submitHandler}>
+
       <label
         className="sr-only"
         htmlFor="weatherInput">
@@ -16,7 +34,9 @@ function SearchForm() {
         id="inputForm"
         type="text"
         name="weatherInput"
-        placeholder="Input city..">
+        placeholder="Input city.."
+        value={city}
+        onChange={inputChangeHandler}>
       </input>
 
       <button

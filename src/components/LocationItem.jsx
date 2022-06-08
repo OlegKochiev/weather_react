@@ -1,10 +1,10 @@
 function LocationItem() {
   return (
     <li
-      class="weather__location-item">
+      className="weather__location-item">
 
       <button
-        class="weather__location-btn"
+        className="weather__location-btn"
         type="button">
         Ede
       </button>

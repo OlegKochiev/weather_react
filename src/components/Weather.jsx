@@ -1,5 +1,5 @@
-import { BTNS_NAME } from "../consts";
-import React from "react";
+import { BTNS_NAME, DEFAULT } from "../consts";
+import React, { useState } from "react";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
 import LocationTitle from "./LocationTitle";
@@ -7,11 +7,28 @@ import TabsContainer from "./TabsContainer";
 import NavContainer from "./NavContainer";
 
 function Weather() {
+
+  const [city, setCity] = useState(DEFAULT.CITY);
+
+  function handleSearch(city) {
+    setCity(city);
+  }
+
+  function requestWeather() {
+
+  }
+
+  function requestForecast() {
+
+  }
+
+
   return (
     <div className="weather">
       <div className="weather__grid">
 
-        <SearchForm />
+        <SearchForm
+          handleSearch={handleSearch} />
 
         <TabsContainer />
 
