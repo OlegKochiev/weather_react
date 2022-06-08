@@ -1,4 +1,4 @@
-function TabNow() {
+function TabNow({ }) {
   return (
     <li className="weather__main-item weather__main-item--active ">
       <div

@@ -5,7 +5,8 @@ const BTNS_NAME = {
 }
 
 const DEFAULT = {
-  CITY: "Vladikavkaz"
+  CITY: "Vladikavkaz",
+  TAB: "NOW"
 }
 
 export {

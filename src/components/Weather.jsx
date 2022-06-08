@@ -9,9 +9,14 @@ import NavContainer from "./NavContainer";
 function Weather() {
 
   const [city, setCity] = useState(DEFAULT.CITY);
+  const [tabName, setTabName] = useState(DEFAULT.TAB);
 
   function handleSearch(city) {
     setCity(city);
+  }
+
+  function handleTab(tabName) {
+    setTabName(tabName);
   }
 
   function requestWeather() {
@@ -30,13 +35,17 @@ function Weather() {
         <SearchForm
           handleSearch={handleSearch} />
 
-        <TabsContainer />
+        <TabsContainer
+          tabName={tabName}
+        />
 
         <LocationTitle />
 
         <LocationList />
 
-        <NavContainer />
+        <NavContainer
+          handleTab={handleTab}
+        />
 
 
         {/*         <button className="weather__nav-btn weather__nav-btn--active" id="btnNow" type="button">Now</button>
