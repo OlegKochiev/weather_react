@@ -1,4 +1,12 @@
-import { BTNS_NAME, DEFAULT } from "../consts";
+import {
+  DEFAULT,
+  REQUEST_TYPE,
+  URLS,
+  API_KEY,
+  FORECAST_COUNT
+} from "../consts";
+
+import WeatherClass from "./WeatherClass";
 import React, { useState } from "react";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
@@ -6,14 +14,18 @@ import LocationTitle from "./LocationTitle";
 import TabsContainer from "./TabsContainer";
 import NavContainer from "./NavContainer";
 
+const weatherAPI = new WeatherClass();
+
 function Weather() {
 
   const [city, setCity] = useState(DEFAULT.CITY);
   const [tabName, setTabName] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
 
-  function handleSearch(city) {
+  async function handleSearch(city) {
     setCity(city);
+    const { weatherNow, weatherForecast } = await weatherAPI.doRequest(city);
+    console.log(weatherNow, weatherForecast);
   }
 
   function handleTab(tabName) {
@@ -24,15 +36,6 @@ function Weather() {
     setLikedCitys([...likedCitys, likedCity]);
     console.log('Like is clicked!');
   }
-
-  function requestWeather() {
-
-  }
-
-  function requestForecast() {
-
-  }
-
 
   return (
     <div className="weather">
