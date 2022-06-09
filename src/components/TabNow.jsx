@@ -5,7 +5,7 @@ function TabNow({ weatherNow, handleLikeClick }) {
   const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon;
 
   function handleClick() {
-    handleLikeClick()
+    handleLikeClick(weatherNow.city);
   }
 
   return (

@@ -38,8 +38,13 @@ function Weather() {
   }
 
   function handleLikeClick(likedCity) {
-
-    setLikedCitys([...likedCitys, city]);
+    const isLiked = likedCitys.find((city) => city === likedCity);
+    if (isLiked) {
+      setLikedCitys([...likedCitys.filter((city) => city !== likedCity)]);
+    };
+    if (!isLiked) {
+      setLikedCitys([...likedCitys, likedCity]);
+    }
   }
 
   return (
@@ -58,19 +63,16 @@ function Weather() {
 
         <LocationTitle />
 
-        <LocationList />
+        <LocationList
+          likedCitys={likedCitys}
+          handleSearch={handleSearch}
+        />
 
         <NavContainer
           tabName={tabName}
           handleTab={handleTab}
         />
 
-
-        {/*         
-          <button className="weather__nav-btn weather__nav-btn--active" id="btnNow" type="button">Now</button>
-          <button className="weather__nav-btn" id="btnDetails" type="button">Details</button>
-          <button className="weather__nav-btn" id="btnForecast" type="button">Forecast</button>
-        */}
       </div>
     </div>
   )
