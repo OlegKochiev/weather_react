@@ -1,7 +1,6 @@
 import TabForecastItem from "./TabForecastItem";
 
 function TabForecast({ weatherForecast }) {
-  console.log(weatherForecast);
   const forecastList = weatherForecast.list.map((hourInfo, index) => {
     return (
       <TabForecastItem
@@ -14,6 +13,7 @@ function TabForecast({ weatherForecast }) {
     <li className="weather__main-item ">
       <div
         className="hour-info">
+
         <div
           className="hour-info__city">
           {weatherForecast.city}

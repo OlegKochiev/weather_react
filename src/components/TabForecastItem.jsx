@@ -24,9 +24,7 @@ function TabForecastItem({ hourInfo }) {
       </div>
       <div className="hour-info__icon">
         {hourInfo.weather}
-        <span style={{ backgroundImage: `url('${ICON_URL}')` }}>
-
-        </span>
+        <span style={{ backgroundImage: `url('${ICON_URL}')` }}></span>
       </div>
     </li>
   )

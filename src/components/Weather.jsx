@@ -1,13 +1,9 @@
 import {
-  DEFAULT,
-  REQUEST_TYPE,
-  URLS,
-  API_KEY,
-  FORECAST_COUNT
+  DEFAULT
 } from "../consts";
 
 import WeatherClass from "./WeatherClass";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
 import LocationTitle from "./LocationTitle";
@@ -24,11 +20,17 @@ function Weather() {
   const [tabName, setTabName] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
 
-  async function handleSearch(city) {
+  useEffect(() => {
+    const firstRequest = async () => {
+      const { weatherNow, weatherForecast } = await weatherAPI.doRequest(city);
+      setWeatherNow(weatherNow);
+      setWeatherForecast(weatherForecast);
+    };
+    firstRequest();
+  }, [city])
+
+  function handleSearch(city) {
     setCity(city);
-    const { weatherNow, weatherForecast } = await weatherAPI.doRequest(city);
-    setWeatherNow(weatherNow);
-    setWeatherForecast(weatherForecast);
   }
 
   function handleTab(tabName) {
@@ -36,8 +38,8 @@ function Weather() {
   }
 
   function handleLikeClick(likedCity) {
-    setLikedCitys([...likedCitys, likedCity]);
-    console.log('Like is clicked!');
+
+    setLikedCitys([...likedCitys, city]);
   }
 
   return (
@@ -59,16 +61,19 @@ function Weather() {
         <LocationList />
 
         <NavContainer
+          tabName={tabName}
           handleTab={handleTab}
         />
 
 
-        {/*         <button className="weather__nav-btn weather__nav-btn--active" id="btnNow" type="button">Now</button>
-        <button className="weather__nav-btn" id="btnDetails" type="button">Details</button>
-        <button className="weather__nav-btn" id="btnForecast" type="button">Forecast</button>
- */}
+        {/*         
+          <button className="weather__nav-btn weather__nav-btn--active" id="btnNow" type="button">Now</button>
+          <button className="weather__nav-btn" id="btnDetails" type="button">Details</button>
+          <button className="weather__nav-btn" id="btnForecast" type="button">Forecast</button>
+        */}
       </div>
     </div>
   )
 }
+
 export default Weather;

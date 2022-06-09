@@ -5,7 +5,7 @@ function TabNow({ weatherNow, handleLikeClick }) {
   const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon;
 
   function handleClick() {
-    handleLikeClick(weatherNow.city)
+    handleLikeClick()
   }
 
   return (
@@ -15,7 +15,7 @@ function TabNow({ weatherNow, handleLikeClick }) {
         style={{ backgroundImage: `url('${ICON_URL}@4x.png')` }}>
         <div
           className="common-info__temperature">
-          {weatherNow.temperature} °
+          {weatherNow.temperature}°
         </div>
 
         <div

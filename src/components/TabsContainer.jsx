@@ -5,16 +5,22 @@ import TabForecast from "./TabForecats";
 
 function TabsContainer({ tabName, weatherNow, weatherForecast, handleLikeClick }) {
   const TABS = {
-    NOW: (<TabNow
-      weatherNow={weatherNow}
-      handleLikeClick={handleLikeClick}
-    />),
-    DETAILS: (<TabDetails 
-      weatherNow={weatherNow}
-    />),
-    FORECAST: (<TabForecast
-      weatherForecast={weatherForecast}
-    />),
+    NOW: (
+      <TabNow
+        weatherNow={weatherNow}
+        handleLikeClick={handleLikeClick}
+      />
+    ),
+    DETAILS: (
+      <TabDetails
+        weatherNow={weatherNow}
+      />
+    ),
+    FORECAST: (
+      <TabForecast
+        weatherForecast={weatherForecast}
+      />
+    ),
   }
 
   const TAB = TABS[tabName];

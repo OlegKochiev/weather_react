@@ -1,6 +1,4 @@
 function TabDetails({ weatherNow }) {
-  const sunriseTime = (new Date(weatherNow.sunrise * 1000)).toLocaleTimeString().substring(0, 5);
-  const sunsetTime = (new Date(weatherNow.sunset * 1000)).toLocaleTimeString().substring(0, 5);
   return (
     <li className="weather__main-item ">
       <div
@@ -29,12 +27,12 @@ function TabDetails({ weatherNow }) {
 
           <li
             className="detailed-info__item detailed-info__item--sunrise">
-            Sunrise: {sunriseTime}
+            Sunrise: {weatherNow.sunrise}
           </li>
 
           <li
             className="detailed-info__item detailed-info__item--sunset">
-            Sunset: {sunsetTime}
+            Sunset: {weatherNow.sunset}
           </li>
         </ul>
       </div>

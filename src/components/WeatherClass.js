@@ -34,8 +34,8 @@ class WeatherClass {
       temperature: Math.round(datas.main.temp - 273),
       feelsLike: Math.round(datas.main.feels_like - 273),
       weather: datas.weather[0].main,
-      sunrise: datas.sys.sunrise,
-      sunset: datas.sys.sunset,
+      sunrise: (new Date(datas.sys.sunrise * 1000)).toLocaleTimeString().substring(0, 5),
+      sunset: (new Date(datas.sys.sunset * 1000)).toLocaleTimeString().substring(0, 5),
       icon: datas.weather[0].icon,
       isFavourite: false
     }
@@ -59,16 +59,11 @@ class WeatherClass {
   }
 
   getURL(requestType) {
-    let url
-    switch (requestType) {
-      case REQUEST_TYPE.WEATHER:
-        url = `${URLS.WEATHER}?q=${this.city}&appid=${API_KEY}`;
-        break;
-      case REQUEST_TYPE.FORECAST:
-        url = `${URLS.FORECAST}?q=${this.city}&appid=${API_KEY}&units=metric&cnt=${FORECAST_COUNT}`;
-        break;
-    }
-    return url;
+    let URL = {
+      [REQUEST_TYPE.WEATHER]: `${URLS.WEATHER}?q=${this.city}&appid=${API_KEY}`,
+      [REQUEST_TYPE.FORECAST]: `${URLS.FORECAST}?q=${this.city}&appid=${API_KEY}&units=metric&cnt=${FORECAST_COUNT}`
+    };
+    return URL[requestType];
   }
 }
 

@@ -1,27 +1,30 @@
 import { BTNS_NAME } from "../consts";
 import NavButton from "./NavButton";
 
-function NavContainer({ handleTab }) {
+function NavContainer({ handleTab, tabName }) {
   return (
     <ul
       className="weather__nav">
 
       <NavButton
-        handleTab={handleTab}
-        btnName={BTNS_NAME.NOW}
         id={"NOW"}
+        tabName={tabName}
+        btnName={BTNS_NAME.NOW}
+        handleTab={handleTab}
       />
 
       <NavButton
-        handleTab={handleTab}
-        btnName={BTNS_NAME.DETAILS}
         id={"DETAILS"}
+        tabName={tabName}
+        btnName={BTNS_NAME.DETAILS}
+        handleTab={handleTab}
       />
 
       <NavButton
-        handleTab={handleTab}
-        btnName={BTNS_NAME.FORECAST}
         id={"FORECAST"}
+        tabName={tabName}
+        btnName={BTNS_NAME.FORECAST}
+        handleTab={handleTab}
       />
     </ul>
   )
