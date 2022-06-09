@@ -185,7 +185,6 @@ body {
 }
 
 .weather__main-item {
-  display: none;
   height: 100%
 }
 

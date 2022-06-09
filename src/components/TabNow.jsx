@@ -16,7 +16,7 @@ function TabNow({ weatherNow, handleLikeClick }) {
         style={{ backgroundImage: `url('${ICON_URL}@4x.png')` }}>
         <div
           className="common-info__temperature">
-          {weatherNow.temperature}
+          {weatherNow.temperature} °
         </div>
 
         <div

@@ -32,7 +32,7 @@ class WeatherClass {
     return {
       city: datas.name,
       temperature: Math.round(datas.main.temp - 273),
-      feels_like: Math.round(datas.main.feels_like - 273),
+      feelsLike: Math.round(datas.main.feels_like - 273),
       weather: datas.weather[0].main,
       sunrise: datas.sys.sunrise,
       sunset: datas.sys.sunset,
