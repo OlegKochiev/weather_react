@@ -10,6 +10,7 @@ function Weather() {
 
   const [city, setCity] = useState(DEFAULT.CITY);
   const [tabName, setTabName] = useState(DEFAULT.TAB);
+  const [likedCitys, setLikedCitys] = useState([]);
 
   function handleSearch(city) {
     setCity(city);
@@ -17,6 +18,11 @@ function Weather() {
 
   function handleTab(tabName) {
     setTabName(tabName);
+  }
+
+  function handleLikeClick(likedCity) {
+    setLikedCitys([...likedCitys, likedCity]);
+    console.log('Like is clicked!');
   }
 
   function requestWeather() {
@@ -37,6 +43,7 @@ function Weather() {
 
         <TabsContainer
           tabName={tabName}
+          handleLikeClick={handleLikeClick}
         />
 
         <LocationTitle />

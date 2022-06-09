@@ -3,9 +3,9 @@ import TabNow from "./TabNow";
 import TabDetails from "./TabDetails";
 import TabForecast from "./TabForecats";
 
-function TabsContainer({ tabName }) {
+function TabsContainer({ tabName, handleLikeClick }) {
   const TABS = {
-    NOW: (<TabNow />),
+    NOW: (<TabNow handleLikeClick={handleLikeClick} />),
     DETAILS: (<TabDetails />),
     FORECAST: (<TabForecast />),
   }
