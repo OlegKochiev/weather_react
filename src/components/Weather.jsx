@@ -19,13 +19,16 @@ const weatherAPI = new WeatherClass();
 function Weather() {
 
   const [city, setCity] = useState(DEFAULT.CITY);
+  const [weatherNow, setWeatherNow] = useState({});
+  const [weatherForecast, setWeatherForecast] = useState({});
   const [tabName, setTabName] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
 
   async function handleSearch(city) {
     setCity(city);
     const { weatherNow, weatherForecast } = await weatherAPI.doRequest(city);
-    console.log(weatherNow, weatherForecast);
+    setWeatherNow(weatherNow);
+    setWeatherForecast(weatherForecast);
   }
 
   function handleTab(tabName) {
@@ -46,6 +49,8 @@ function Weather() {
 
         <TabsContainer
           tabName={tabName}
+          weatherNow={weatherNow}
+          weatherForecast={weatherForecast}
           handleLikeClick={handleLikeClick}
         />
 

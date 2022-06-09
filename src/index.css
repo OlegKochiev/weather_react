@@ -121,7 +121,7 @@ body {
 .weather__title-wrapper,
 .weather__location-list,
 .weather__nav-btn {
-  background-color: #fff
+  background-color: rgb(216, 253, 248)
 }
 
 .weather .weather-form {

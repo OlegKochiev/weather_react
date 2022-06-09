@@ -1,4 +1,4 @@
-function TabForecast() {
+function TabForecast({ weatherForecast }) {
   return (
     <li className="weather__main-item ">
       <div

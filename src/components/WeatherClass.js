@@ -2,12 +2,13 @@ import {
   REQUEST_TYPE,
   URLS,
   API_KEY,
-  FORECAST_COUNT
+  FORECAST_COUNT,
+  DEFAULT
 } from "../consts";
 
 class WeatherClass {
 
-  constructor(city) {
+  constructor(city = DEFAULT.CITY) {
     this.city = city;
   }
 
@@ -16,7 +17,7 @@ class WeatherClass {
     const [responseWeather, responseForecast] = await Promise.all([
       fetch(this.getURL(REQUEST_TYPE.WEATHER)),
       fetch(this.getURL(REQUEST_TYPE.FORECAST)),
-    ])
+    ]);
 
     const responseWeatherDatas = await responseWeather.json();
     const responseForecastDatas = await responseForecast.json();
