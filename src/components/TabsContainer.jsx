@@ -3,10 +3,11 @@ import TabNow from "./TabNow";
 import TabDetails from "./TabDetails";
 import TabForecast from "./TabForecats";
 
-function TabsContainer({ tabName, weatherNow, weatherForecast, handleLikeClick }) {
+function TabsContainer({ tabName, isLiked, weatherNow, weatherForecast, handleLikeClick }) {
   const TABS = {
     NOW: (
       <TabNow
+        isLiked={isLiked}
         weatherNow={weatherNow}
         handleLikeClick={handleLikeClick}
       />

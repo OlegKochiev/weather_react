@@ -1,8 +1,11 @@
-import { URLS } from '../consts';
+import {
+  URLS
+} from '../consts';
 
-function TabNow({ weatherNow, handleLikeClick }) {
+function TabNow({ isLiked, weatherNow, handleLikeClick }) {
 
   const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon;
+  const activeClass = isLiked && "common-info__favourite--active"
 
   function handleClick() {
     handleLikeClick(weatherNow.city);
@@ -24,7 +27,7 @@ function TabNow({ weatherNow, handleLikeClick }) {
         </div>
 
         <button
-          className="common-info__favourite"
+          className={"common-info__favourite " + activeClass}
           type="button"
           onClick={handleClick}>
         </button>

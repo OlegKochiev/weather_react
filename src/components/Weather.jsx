@@ -3,7 +3,11 @@ import {
 } from "../consts";
 
 import WeatherClass from "./WeatherClass";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import {
+  useState,
+  useEffect
+} from "react";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
 import LocationTitle from "./LocationTitle";
@@ -19,6 +23,7 @@ function Weather() {
   const [weatherForecast, setWeatherForecast] = useState({});
   const [tabName, setTabName] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     const firstRequest = async () => {
@@ -31,6 +36,12 @@ function Weather() {
 
   function handleSearch(city) {
     setCity(city);
+    const isLiked = likedCitys.find((likedCity) => city === likedCity)
+    if (isLiked) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
   }
 
   function handleTab(tabName) {
@@ -45,6 +56,7 @@ function Weather() {
     if (!isLiked) {
       setLikedCitys([...likedCitys, likedCity]);
     }
+    setIsLiked(!isLiked);
   }
 
   return (
@@ -56,6 +68,7 @@ function Weather() {
 
         <TabsContainer
           tabName={tabName}
+          isLiked={isLiked}
           weatherNow={weatherNow}
           weatherForecast={weatherForecast}
           handleLikeClick={handleLikeClick}
