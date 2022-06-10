@@ -36,12 +36,8 @@ function Weather() {
 
   function handleSearch(city) {
     setCity(city);
-    const isLiked = likedCitys.find((likedCity) => city === likedCity)
-    if (isLiked) {
-      setIsLiked(true);
-    } else {
-      setIsLiked(false);
-    }
+    const isLiked = likedCitys.find((likedCity) => city === likedCity);
+    setIsLiked(isLiked);
   }
 
   function handleTab(tabName) {

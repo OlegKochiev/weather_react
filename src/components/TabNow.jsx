@@ -4,8 +4,8 @@ import {
 
 function TabNow({ isLiked, weatherNow, handleLikeClick }) {
 
-  const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon;
-  const activeClass = isLiked && "common-info__favourite--active"
+  const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon + '@4x.png';
+  const activeClass = isLiked && "common-info__favourite--active";
 
   function handleClick() {
     handleLikeClick(weatherNow.city);
@@ -15,7 +15,7 @@ function TabNow({ isLiked, weatherNow, handleLikeClick }) {
     <li className="weather__main-item weather__main-item--active ">
       <div
         className="common-info"
-        style={{ backgroundImage: `url('${ICON_URL}@4x.png')` }}>
+        style={{ backgroundImage: `url('${ICON_URL}')` }}>
         <div
           className="common-info__temperature">
           {weatherNow.temperature}°
