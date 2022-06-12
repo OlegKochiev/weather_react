@@ -1,7 +1,7 @@
 import { BTNS_NAME } from "../consts";
 import NavButton from "./NavButton";
 
-function NavContainer({ handleTab, tabName }) {
+function NavContainer({ handleChangeActiveTab, tabName }) {
   return (
     <ul
       className="weather__nav">
@@ -10,21 +10,21 @@ function NavContainer({ handleTab, tabName }) {
         id={"NOW"}
         tabName={tabName}
         btnName={BTNS_NAME.NOW}
-        handleTab={handleTab}
+        handleChangeActiveTab={handleChangeActiveTab}
       />
 
       <NavButton
         id={"DETAILS"}
         tabName={tabName}
         btnName={BTNS_NAME.DETAILS}
-        handleTab={handleTab}
+        handleChangeActiveTab={handleChangeActiveTab}
       />
 
       <NavButton
         id={"FORECAST"}
         tabName={tabName}
         btnName={BTNS_NAME.FORECAST}
-        handleTab={handleTab}
+        handleChangeActiveTab={handleChangeActiveTab}
       />
     </ul>
   )

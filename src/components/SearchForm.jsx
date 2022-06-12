@@ -3,13 +3,13 @@ import React, { useState } from "react";
 function SearchForm({ handleSearch }) {
   const [city, setCity] = useState('');
 
-  function submitHandler(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     handleSearch(city);
     clearInput();
   }
 
-  function inputChangeHandler(e) {
+  function handleInputValueChange(e) {
     const inputValue = e.target.value;
     setCity(inputValue);
   }
@@ -21,7 +21,7 @@ function SearchForm({ handleSearch }) {
     <form
       className="weather__form weather-form"
       action="#"
-      onSubmit={submitHandler}>
+      onSubmit={handleSubmit}>
 
       <label
         className="sr-only"
@@ -36,7 +36,7 @@ function SearchForm({ handleSearch }) {
         name="weatherInput"
         placeholder="Input city.."
         value={city}
-        onChange={inputChangeHandler}>
+        onChange={handleInputValueChange}>
       </input>
 
       <button

@@ -12,8 +12,8 @@ class WeatherClass {
     this.city = city;
   }
 
-  async doRequest(city = this.city) {
-    this.city = city;
+  async doRequest(city) {
+    this.city = city ?? DEFAULT.CITY;
     const [responseWeather, responseForecast] = await Promise.all([
       fetch(this.getURL(REQUEST_TYPE.WEATHER)),
       fetch(this.getURL(REQUEST_TYPE.FORECAST)),

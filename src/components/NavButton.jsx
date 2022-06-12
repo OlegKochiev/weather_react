@@ -1,7 +1,7 @@
-function NavButton({ id, tabName, btnName, handleTab }) {
+function NavButton({ id, tabName, btnName, handleChangeActiveTab }) {
   function handleClick(e) {
-    const id = e.target.id;
-    handleTab(id)
+    const activeTabName = e.target.id;
+    handleChangeActiveTab(activeTabName)
   }
 
   const activeClass = (id === tabName) ? " weather__nav-btn--active" : "";

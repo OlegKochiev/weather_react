@@ -21,7 +21,7 @@ function Weather() {
   const [city, setCity] = useState(DEFAULT.CITY);
   const [weatherNow, setWeatherNow] = useState({});
   const [weatherForecast, setWeatherForecast] = useState({});
-  const [tabName, setTabName] = useState(DEFAULT.TAB);
+  const [tabName, setActiveTab] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -36,12 +36,14 @@ function Weather() {
 
   function handleSearch(city) {
     setCity(city);
-    const isLiked = likedCitys.find((likedCity) => city === likedCity);
-    setIsLiked(isLiked);
+    const cityIsLiked = likedCitys.find((likedCity) => city === likedCity);
+    if (cityIsLiked) {
+      setIsLiked(cityIsLiked);
+    }
   }
 
-  function handleTab(tabName) {
-    setTabName(tabName);
+  function handleChangeActiveTab(tabName) {
+    setActiveTab(tabName);
   }
 
   function handleLikeClick(likedCity) {
@@ -79,7 +81,7 @@ function Weather() {
 
         <NavContainer
           tabName={tabName}
-          handleTab={handleTab}
+          handleChangeActiveTab={handleChangeActiveTab}
         />
 
       </div>
