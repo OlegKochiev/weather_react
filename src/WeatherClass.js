@@ -4,7 +4,7 @@ import {
   API_KEY,
   FORECAST_COUNT,
   DEFAULT
-} from "../consts";
+} from "./consts";
 
 class WeatherClass {
 

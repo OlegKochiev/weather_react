@@ -2,12 +2,12 @@ import {
   DEFAULT
 } from "../consts";
 
-import WeatherClass from "./WeatherClass";
-import React from "react";
-import {
+import React, {
   useState,
   useEffect
 } from "react";
+import TabContext from "../service/TabContext";
+import WeatherClass from "../WeatherClass";
 import SearchForm from "./SearchForm";
 import LocationList from "./LocationList";
 import LocationTitle from "./LocationTitle";
@@ -15,6 +15,7 @@ import TabsContainer from "./TabsContainer";
 import NavContainer from "./NavContainer";
 
 const weatherAPI = new WeatherClass();
+
 
 function Weather() {
 
@@ -32,14 +33,12 @@ function Weather() {
       setWeatherForecast(weatherForecast);
     };
     firstRequest();
-  }, [city])
+  }, [city]);
 
   function handleSearch(city) {
     setCity(city);
     const cityIsLiked = likedCitys.find((likedCity) => city === likedCity);
-    if (cityIsLiked) {
-      setIsLiked(cityIsLiked);
-    }
+    setIsLiked(cityIsLiked || false);
   }
 
   function handleChangeActiveTab(tabName) {
@@ -60,17 +59,17 @@ function Weather() {
   return (
     <div className="weather">
       <div className="weather__grid">
-
         <SearchForm
           handleSearch={handleSearch} />
 
-        <TabsContainer
-          tabName={tabName}
-          isLiked={isLiked}
-          weatherNow={weatherNow}
-          weatherForecast={weatherForecast}
-          handleLikeClick={handleLikeClick}
-        />
+        <TabContext.Provider value={tabName}>
+          <TabsContainer
+            isLiked={isLiked}
+            weatherNow={weatherNow}
+            weatherForecast={weatherForecast}
+            handleLikeClick={handleLikeClick}
+          />
+        </TabContext.Provider>
 
         <LocationTitle />
 
@@ -79,11 +78,12 @@ function Weather() {
           handleSearch={handleSearch}
         />
 
-        <NavContainer
-          tabName={tabName}
-          handleChangeActiveTab={handleChangeActiveTab}
-        />
 
+        <TabContext.Provider value={tabName}>
+          <NavContainer
+            handleChangeActiveTab={handleChangeActiveTab}
+          />
+        </TabContext.Provider>
       </div>
     </div>
   )
