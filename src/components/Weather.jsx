@@ -13,6 +13,7 @@ import LocationList from "./LocationList";
 import LocationTitle from "./LocationTitle";
 import TabsContainer from "./TabsContainer";
 import NavContainer from "./NavContainer";
+import useWidth from "./hooks/useWidth";
 
 const weatherAPI = new WeatherClass();
 
@@ -25,6 +26,8 @@ function Weather() {
   const [tabName, setActiveTab] = useState(DEFAULT.TAB);
   const [likedCitys, setLikedCitys] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
+  const screenWidth = useWidth();
+  console.log(screenWidth);
 
   useEffect(() => {
     const firstRequest = async () => {
