@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { setCurrentCity } from "./redux/weatherSlice";
+import WeatherClass from "../WeatherClass";
+import Weather from "./Weather";
+
+const weatherAPI = new WeatherClass();
 
 function SearchForm({ handleSearch }) {
   const [city, setCity] = useState('');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const weatherRequest = async () => {
+      const { weatherNow, weatherForecast } = await weatherAPI.doRequest(city);
+      dispatch(
+        setCurrentCity({
+          weatherNow: { ...weatherNow },
+          weatherForecast: { ...weatherForecast }
+        })
+      )
+
+    };
+    weatherRequest();
+
+  }, [city]);
+
+
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSearch(city);
-    dispatch(
-      setCurrentCity({
-        city
-      })
-    )
+    // handleSearch(city);
+
     clearInput();
   }
 
