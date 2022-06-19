@@ -6,3 +6,4 @@ const store = configureStore({
     weather: weatherSlice
   }
 })
+export default store;

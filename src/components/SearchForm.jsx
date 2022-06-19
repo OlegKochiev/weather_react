@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { setCurrentCity } from "./redux/weatherSlice";
 
 function SearchForm({ handleSearch }) {
   const [city, setCity] = useState('');
+  const dispatch = useDispatch();
+
 
   function handleSubmit(e) {
     e.preventDefault();
     handleSearch(city);
+    dispatch(
+      setCurrentCity({
+        city
+      })
+    )
     clearInput();
   }
 

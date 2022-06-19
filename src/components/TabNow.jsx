@@ -1,14 +1,32 @@
+import { useDispatch } from 'react-redux';
 import {
   URLS
 } from '../consts';
+import { addCityToFavourite, removeCityFromFavourite } from './redux/weatherSlice';
 
 function TabNow({ isLiked, weatherNow, handleLikeClick }) {
+
+  const dispatch = useDispatch();
 
   const ICON_URL = URLS.WEATHER_ICON + weatherNow.icon + '@4x.png';
   const activeClass = isLiked && "common-info__favourite--active";
 
   function handleClick() {
-    handleLikeClick(weatherNow.city);
+    const city = weatherNow.city;
+    handleLikeClick(city);
+    if (isLiked) {
+      dispatch(
+        removeCityFromFavourite({
+          city
+        })
+      );
+    } else {
+      dispatch(
+        addCityToFavourite({
+          city
+        })
+      )
+    }
   }
 
   return (

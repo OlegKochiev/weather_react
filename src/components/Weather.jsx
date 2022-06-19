@@ -27,7 +27,6 @@ function Weather() {
   const [likedCitys, setLikedCitys] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const screenWidth = useWidth();
-  console.log(screenWidth);
 
   useEffect(() => {
     const firstRequest = async () => {

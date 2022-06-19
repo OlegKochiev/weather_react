@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import './index.css';
+import store from './components/redux/store'
 import Weather from './components/Weather';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Weather />
+    <Provider store={store}>
+      <Weather />
+    </Provider>
   </React.StrictMode>
 );
