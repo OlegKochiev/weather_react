@@ -1,6 +1,5 @@
-function LocationItem({ city, handleSearch }) {
+function LocationItem({ city }) {
   function handleClick() {
-    handleSearch(city);
   }
   return (
     <li

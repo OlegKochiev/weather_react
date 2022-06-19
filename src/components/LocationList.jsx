@@ -1,12 +1,16 @@
 import LocationItem from "./LocationItem";
+import { useSelector } from 'react-redux'
 
-function LocationList({ likedCitys, handleSearch }) {
-  const locationList = likedCitys.map((city, index) => {
+
+function LocationList() {
+
+  const favouriteCitys = useSelector(store => store.favouriteCitys)
+
+  const locationList = favouriteCitys.map((city, index) => {
     return (
       <LocationItem
         key={index}
         city={city}
-        handleSearch={handleSearch}
       />
     )
   });

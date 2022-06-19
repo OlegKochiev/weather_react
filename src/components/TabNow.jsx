@@ -1,10 +1,14 @@
 import { useDispatch } from 'react-redux';
-import {
-  URLS
-} from '../consts';
+import { URLS } from '../consts';
 import { addCityToFavourite, removeCityFromFavourite } from './redux/weatherSlice';
+import { useSelector } from 'react-redux';
 
-function TabNow({ isLiked, weatherNow, handleLikeClick }) {
+
+function TabNow({ isLiked, handleLikeClick }) {
+
+  const weatherNow = useSelector((store) => store.weatherNow);
+  console.log(weatherNow);
+
 
   const dispatch = useDispatch();
 

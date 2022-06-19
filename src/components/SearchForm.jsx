@@ -6,7 +6,8 @@ import Weather from "./Weather";
 
 const weatherAPI = new WeatherClass();
 
-function SearchForm({ handleSearch }) {
+function SearchForm() {
+  const [inputValue, setInputValue] = useState('');
   const [city, setCity] = useState('');
   const dispatch = useDispatch();
 
@@ -22,21 +23,19 @@ function SearchForm({ handleSearch }) {
 
     };
     weatherRequest();
-
   }, [city]);
 
 
 
   function handleSubmit(e) {
     e.preventDefault();
-    // handleSearch(city);
-
+    setCity(inputValue);
     clearInput();
   }
 
   function handleInputValueChange(e) {
     const inputValue = e.target.value;
-    setCity(inputValue);
+    setInputValue(inputValue);
   }
 
   function clearInput() {
